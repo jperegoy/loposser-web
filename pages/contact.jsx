@@ -13,7 +13,7 @@ export default function Contact({ heading, biography, image, email }) {
       <main className="mt-16">
         <div className="container">
           <div className="flex items-center space-x-20">
-            <Image {...image} className="rounded-tl flex-none" />
+            <Image {...image} className="rounded-tl-3xl flex-none" />
 
             <div className="flex-1">
               <h1 className="text-3xl font-semibold">{heading}</h1>

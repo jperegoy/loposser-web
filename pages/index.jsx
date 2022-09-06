@@ -1,3 +1,10 @@
+import client, {
+  getClient,
+  usePreviewSubscription,
+  PortableText,
+} from "@lib/sanity";
+import { groq } from "next-sanity";
+
 import Head from "next/head";
 
 import seed from "../seed/examples";
@@ -24,8 +31,17 @@ export default function Home({ data }) {
     </div>
   );
 }
+const q = groq`
+*[_type == "projects"] | order(_createdAt desc) {
+  ..., 
+  categories[]->
+}
+`;
 
-export const getServerSideProps = () => {
+export const getServerSideProps = async () => {
+  const projects = await getClient(false).fetch(q);
+  console.log(projects);
+
   return {
     props: {
       data: seed,

@@ -23,8 +23,8 @@ export default function Home({ data }) {
       <main className="mt-16">
         <div className="container">
           <div className="flex space-x-16">
-            {data.map(item => (
-              <Thumbnail key={item.id} {...item} />
+            {data.map(({ _id, ...rest }) => (
+              <Thumbnail key={_id} {...rest} />
             ))}
           </div>
         </div>
@@ -32,20 +32,22 @@ export default function Home({ data }) {
     </div>
   );
 }
-const q = groq`
+
+const query = groq`
 *[_type == "projects"] | order(_createdAt desc) {
-  ..., 
+  ...,
   categories[]->
 }
 `;
 
 export const getServerSideProps = async () => {
-  const projects = await getClient(false).fetch(q);
-  // console.log(projects);
+  const projects = await getClient(false).fetch(query);
+
+  // projects.map(project => console.log(project.poster.asset));
 
   return {
     props: {
-      data: seed,
+      data: projects,
     },
   };
 };

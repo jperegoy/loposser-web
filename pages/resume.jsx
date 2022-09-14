@@ -88,7 +88,7 @@ export default function Contact({
             </div>
           </div>
 
-          <style jsx>
+          <style>
             {`
               :global(.biography p + p) {
                 margin-top: 0.66em;

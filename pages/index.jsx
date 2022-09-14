@@ -1,8 +1,9 @@
-import client, {
-  getClient,
-  usePreviewSubscription,
-  PortableText,
-} from "@lib/sanity";
+// import client, {
+//   getClient,
+//   usePreviewSubscription,
+//   PortableText,
+// } from "@lib/sanity";
+import { getClient } from "@lib/sanity";
 import { groq } from "next-sanity";
 
 import Head from "next/head";
@@ -40,7 +41,7 @@ const q = groq`
 
 export const getServerSideProps = async () => {
   const projects = await getClient(false).fetch(q);
-  console.log(projects);
+  // console.log(projects);
 
   return {
     props: {

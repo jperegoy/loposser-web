@@ -7,8 +7,15 @@ import category from "./category";
 import screenshot from "./screenshot";
 
 import project from "./project";
+import resume from "./resume";
 
 export default createSchema({
   name: "default",
-  types: schemaTypes.concat([project, screenshot, category, blockContent]),
+  types: schemaTypes.concat([
+    project,
+    screenshot,
+    resume,
+    category,
+    blockContent,
+  ]),
 });

@@ -31,7 +31,8 @@ export default function Contact({ heading, biography, image, email }) {
             </div>
           </div>
 
-          <style jsx>
+          <style>
+            {/* `jsx` lint issue? */}
             {`
               :global(.biography p + p) {
                 margin-top: 0.66em;

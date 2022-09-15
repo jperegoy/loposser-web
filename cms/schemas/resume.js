@@ -25,12 +25,12 @@ export default {
             },
             {
               name: "school",
-              title: "school",
+              title: "School",
               type: "string",
             },
             {
-              name: "years",
-              title: "Years",
+              name: "tenure",
+              title: "Tenure",
               type: "string",
             },
           ],

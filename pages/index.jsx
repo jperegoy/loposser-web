@@ -8,8 +8,6 @@ import { groq } from "next-sanity";
 
 import Head from "next/head";
 
-import seed from "../seed/examples";
-
 import { Thumbnail } from "../components/thumbnail";
 
 export default function Home({ data }) {
@@ -36,14 +34,16 @@ export default function Home({ data }) {
 const query = groq`
 *[_type == "projects"] | order(_createdAt desc) {
   ...,
+  "poster": {
+    "alt": poster.alt,
+    "src": poster.asset->url
+  },
   categories[]->
 }
 `;
 
 export const getServerSideProps = async () => {
   const projects = await getClient(false).fetch(query);
-
-  // projects.map(project => console.log(project.poster.asset));
 
   return {
     props: {

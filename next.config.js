@@ -1,11 +1,11 @@
-module.exports = (phase, { defaultConfig }) => {
+module.exports = () => {
   /**
    * @type {import('next').NextConfig}
    */
 
   const nextConfig = {
     images: {
-      domains: ["picsum.photos"],
+      domains: ["picsum.photos", "cdn.sanity.io"],
     },
     rewrites: () => [
       {
